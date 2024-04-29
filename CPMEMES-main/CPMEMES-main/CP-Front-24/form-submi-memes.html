@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mural de Memes</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="submit-memes.css">
+  </head>
+<body>
+
+  <div class="nav">
+    <nav class="navigation">
+        <ul class="nav-list">
+            <li class="nav-item"><a href="./temp_expo_memes.html">Exposições</a></li>
+            <li class="nav-item"><a href="./halldafama.html">Hall da Fama</a></li>
+            <li class="nav-item"><a href="./workshop.html">Workshops</a></li>
+            <li class="nav-item"><a href="./LojaDeMemes.html">Loja</a></li>
+            <li class="nav-item nav-item-selecionado"><a href="form-submi-memes.html">Submeter Memes</a></li>
+        </ul>
+    </nav>
+</div>
+
+  <div class="container">
+    <h1>Mural de Memes</h1>
+    
+    <div id="memeDisplay" style="display: flex; flex-wrap: wrap; overflow-x: auto; max-width: 100vw;">
+    
+      <img class="meme" src="https://imagens.brasil.elpais.com/resizer/4P9Mj1kULkcF5LkFCZtqsZFP4Us=/414x233/cloudfront-eu-central-1.images.arcpublishing.com/prisa/GLK77QHJ4JAY3KAFM5FV6YV5OM.webp" style="max-width: 200px; margin-right: 10px;">
+      <img class="meme" src="https://mufasa.com.br/wp-content/uploads/2018/04/gloria_pires_meme_post_mufasa_agengy.jpg" style="max-width: 200px; margin-right: 10px;">
+      <img class="meme" src="https://store-images.microsoft.com/image/apps.59356.9007199266251377.f0912944-efa6-4ba4-8068-ef6667d259f2.e3ce1914-2bb6-4135-a508-b24b20b9393a?h=464" style="max-width: 200px; margin-right: 10px;">  
+      <img class="meme" src="https://p2.trrsf.com/image/fget/cf/800/450/middle/images.terra.com/2023/07/17/1250579066-i764852.png" style="max-width: 200px; margin-right: 10px;">  
+      <img class="meme" src="https://mufasa.com.br/wp-content/uploads/2018/04/nazare_confusa_mufasa.jpg" style="max-width: 200px; margin-right: 10px;">  
+      <img class="meme" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQyTsrk1Bp8VakmWwRlBGUX9T-QQFvK2aPs-Q&usqp=CAU" style="max-width: 200px; margin-right: 10px;">  
+    </div>
+    
+    <form>
+      <div class="mb-3">
+        <label for="memeUpload" class="form-label">Escolha o meme:</label>
+        <input type="file" class="form-control" id="memeUpload">
+      </div>
+    
+      <button type="submit" class="btn 
+      btn-primary">Enviar Meme</button>
+    </form>
+  </div>
+  
+  <style>
+    #memeDisplay img {
+      width: 200px; /* Tamanho máximo dos memes */
+      height: 150px;
+      margin-right: 10px; /* Espaçamento entre os memes */
+      margin-top: 10px;
+    }
+    .meme {
+      width: 200px; /* Tamanho máximo dos memes */
+      height: 150px;
+      margin-right: 10px; /* Espaçamento entre os memes */
+      margin-top: 10px;
+    }
+  </style>
+  
+  <script>
+    document.querySelector('form').addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      const fileInput = document.getElementById('memeUpload');
+      const file = fileInput.files[0];
+      const memeDisplay = document.getElementById('memeDisplay');
+      
+      if (file && memeDisplay) {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+          const img = document.createElement('img');
+          img.src = e.target.result;
+          memeDisplay.appendChild(img);
+          
+          if (memeDisplay.scrollWidth > window.innerWidth) {
+            memeDisplay.scrollLeft = memeDisplay.scrollWidth;
+          }
+        }
+        reader.readAsDataURL(file);
+      } else {
+        alert('Por favor, escolha um arquivo de meme.');
+      }
+    });
+  </script>
+
+</body>
+</html>
